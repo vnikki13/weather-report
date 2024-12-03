@@ -31,18 +31,16 @@ const changeColor = (temperature) =>{
 
 
 const increaseTemp = () =>{
-    const element = document.getElementById("tempValue");
-    value = parseInt(element.textContent) || 0;
+    value = parseInt(temp.textContent) || 0;
     changeColor(value)
-    element.innerText = (value + 1);
+    temp.innerText = (value + 1);
     
 }
 
 const decreaseTemp = () => {
-    const element = document.getElementById("tempValue");
-    value = parseInt(element.textContent) || 0;
+    value = parseInt(temp.textContent) || 0;
     changeColor(value)
-    element.innerText = (value - 1);
+    temp.innerText = (value - 1);
 }
 
 const changeSky = () => {
@@ -67,16 +65,55 @@ const resetCityName = () => {
     document.getElementById("cityNameInput").value = ''
 }
 
+const getTemp = () => {
+    axios
+    .get('http://127.0.0.1:5000/location', {params: {q: 'seattle'}})
+    .then((response) => {
+        console.log(
+            'The data given back by the API response is:',
+            response.data);
+        axios.get('http://127.0.0.1:5000/weather',
+            {params:{
+                lat: response.data[0].lat,
+                lon: response.data[0].lon
+            }}
+        )
+        .then((result) => {
+            const tempK = result.data.main.temp
+            const tempF = Math.round((tempK - 273.15) * 9/5 + 32);
+            console.log('Result #2: ', tempF)
+            changeColor(tempF)
+            temp.innerText = tempF;
+        })
+        .catch((error) => {
+            console.log(
+                'The error for #2 is:',
+                error.response.data
+            );
+        })
+    })
+    .catch((error) => {
+        console.log(
+            'The error given back by the API response is:',
+            error.response.data
+        );
+    });    
+};
+
+const temp = document.getElementById("tempValue");
 const increment = document.getElementById("increaseTempControl");
 const decrement = document.getElementById("decreaseTempControl");
 const landscape = document.getElementById('landscape');
 const skySelect = document.getElementById("skySelect");
 const resetBtn = document.getElementById("cityNameReset");
+const currentTempButton = document.getElementById("currentTempButton");
 
 increment.addEventListener("click", increaseTemp);
 decrement.addEventListener("click",decreaseTemp);
 skySelect.addEventListener("change", changeSky);
 resetBtn.addEventListener("click", resetCityName);
+currentTempButton.addEventListener("click",getTemp);
 
 const defaultCity = "Seattle";
 document.getElementById("headerCityName").textContent = defaultCity;
+
