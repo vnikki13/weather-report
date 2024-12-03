@@ -45,10 +45,29 @@ const decreaseTemp = () => {
     element.innerText = (value - 1);
 }
 
+const changeSky = () => {
+    const sky = document.getElementById("sky");
+    switch (skySelect.value) {
+        case "sunny":
+            sky.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+            break;
+        case "cloudy":
+            sky.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️";
+            break;
+        case "rainy":
+            sky.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+            break;
+        case "snowy":
+            sky.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+            break;
+    }
+}
 
 const increment = document.getElementById("increaseTempControl");
 const decrement = document.getElementById("decreaseTempControl");
 const landscape = document.getElementById('landscape');
+const skySelect = document.getElementById("skySelect");
 
 increment.addEventListener("click", increaseTemp);
 decrement.addEventListener("click",decreaseTemp);
+skySelect.addEventListener("change", changeSky);
