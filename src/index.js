@@ -63,11 +63,20 @@ const changeSky = () => {
     }
 }
 
+const resetCityName = () => {
+    document.getElementById("cityNameInput").value = ''
+}
+
 const increment = document.getElementById("increaseTempControl");
 const decrement = document.getElementById("decreaseTempControl");
 const landscape = document.getElementById('landscape');
 const skySelect = document.getElementById("skySelect");
+const resetBtn = document.getElementById("cityNameReset");
 
 increment.addEventListener("click", increaseTemp);
 decrement.addEventListener("click",decreaseTemp);
 skySelect.addEventListener("change", changeSky);
+resetBtn.addEventListener("click", resetCityName);
+
+const defaultCity = "Seattle";
+document.getElementById("headerCityName").textContent = defaultCity;
