@@ -162,3 +162,7 @@ body {
 .snowy {
   background-color: lightsteelblue;
 }
+
+#increaseTempControl, #decreaseTempControl {
+  cursor: pointer;
+}
