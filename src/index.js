@@ -45,18 +45,23 @@ const decreaseTemp = () => {
 
 const changeSky = () => {
     const sky = document.getElementById("sky");
+    gardenContent.classList.remove('sunny', 'cloudy', 'rainy', 'snowy');
     switch (skySelect.value) {
         case "sunny":
             sky.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+            gardenContent.classList.add('sunny');
             break;
         case "cloudy":
             sky.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️";
+            gardenContent.classList.add('cloudy');
             break;
         case "rainy":
             sky.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+            gardenContent.classList.add('rainy');
             break;
         case "snowy":
             sky.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+            gardenContent.classList.add('snowy');
             break;
     }
 }
