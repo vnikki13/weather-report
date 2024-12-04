@@ -100,6 +100,13 @@ const getTemp = () => {
     });    
 };
 
+const changeCityName = (event) =>{
+    const inputValue = event.currentTarget.value;
+    const cityTitle = document.getElementById("headerCityName");
+    cityTitle.textContent = inputValue;
+
+}
+
 const temp = document.getElementById("tempValue");
 const increment = document.getElementById("increaseTempControl");
 const decrement = document.getElementById("decreaseTempControl");
@@ -107,13 +114,17 @@ const landscape = document.getElementById('landscape');
 const skySelect = document.getElementById("skySelect");
 const resetBtn = document.getElementById("cityNameReset");
 const currentTempButton = document.getElementById("currentTempButton");
+const cityTitle = document.getElementById("headerCityName");
+const cityInput= document.getElementById("cityNameInput");
 
 increment.addEventListener("click", increaseTemp);
 decrement.addEventListener("click",decreaseTemp);
 skySelect.addEventListener("change", changeSky);
 resetBtn.addEventListener("click", resetCityName);
 currentTempButton.addEventListener("click",getTemp);
+cityInput.addEventListener("input", changeCityName);
 
 const defaultCity = "Seattle";
-document.getElementById("headerCityName").textContent = defaultCity;
+cityTitle.textContent = defaultCity;
+
 
