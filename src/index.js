@@ -106,7 +106,7 @@ const getTemp = () => {
 
 // Sky options
 const changeSky = () => {
-    const sky = document.getElementById("sky");
+    const sky = skyDisplay;
     switch (skySelect.value) {
         case "sunny":
             sky.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
@@ -121,7 +121,7 @@ const changeSky = () => {
             sky.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
             break;
     }
-}
+};
 
 // Add event listeners to the buttons
 
