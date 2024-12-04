@@ -74,12 +74,12 @@ const resetCityName = () => {
 const getTemp = () => {
     const cityName = cityTitle.textContent.trim() || defaultCity;
     axios
-    .get('http://127.0.0.1:5000/location', {params: {q: cityName}})
+    .get('https://ada-weather-report-proxy-server.onrender.com/location', {params: {q: cityName}})
     .then((response) => {
         console.log(
             'The data given back by the API response is:',
             response.data);
-        axios.get('http://127.0.0.1:5000/weather',
+        axios.get('https://ada-weather-report-proxy-server.onrender.com/weather',
             {params:{
                 lat: response.data[0].lat,
                 lon: response.data[0].lon
