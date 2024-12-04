@@ -67,7 +67,8 @@ const changeSky = () => {
 }
 
 const resetCityName = () => {
-    document.getElementById("cityNameInput").value = ''
+    document.getElementById("cityNameInput").value = '';
+    headerCityName.textContent = defaultCity;
 }
 
 const getTemp = () => {
