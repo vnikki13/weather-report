@@ -66,8 +66,9 @@ const resetCityName = () => {
 }
 
 const getTemp = () => {
+    const cityName = cityTitle.textContent.trim() || defaultCity;
     axios
-    .get('http://127.0.0.1:5000/location', {params: {q: 'seattle'}})
+    .get('http://127.0.0.1:5000/location', {params: {q: cityName}})
     .then((response) => {
         console.log(
             'The data given back by the API response is:',
@@ -88,14 +89,14 @@ const getTemp = () => {
         .catch((error) => {
             console.log(
                 'The error for #2 is:',
-                error.response.data
+                error.response || error.message
             );
         })
     })
     .catch((error) => {
         console.log(
             'The error given back by the API response is:',
-            error.response.data
+            error.response || error.message
         );
     });    
 };
