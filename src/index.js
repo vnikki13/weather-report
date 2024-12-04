@@ -17,6 +17,7 @@ const cityNameReset = document.getElementById('cityNameReset');
 const currentTempButton = document.getElementById("currentTempButton");
 const skySelect = document.getElementById('skySelect');
 const skyDisplay = document.getElementById('sky');
+const gardenContent = document.getElementById('gardenContent');
 
 // Update temperature and related effects
 const updateTemperature = () => {
@@ -107,18 +108,23 @@ const getTemp = () => {
 // Sky options
 const changeSky = () => {
     const sky = skyDisplay;
+    gardenContent.classList.remove('sunny', 'cloudy', 'rainy', 'snowy');
     switch (skySelect.value) {
         case "sunny":
             sky.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+            gardenContent.classList.add('sunny');
             break;
         case "cloudy":
             sky.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️";
+            gardenContent.classList.add('cloudy');
             break;
         case "rainy":
             sky.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+            gardenContent.classList.add('rainy');
             break;
         case "snowy":
             sky.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+            gardenContent.classList.add('snowy');
             break;
     }
 };
